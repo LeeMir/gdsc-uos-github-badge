@@ -1,8 +1,8 @@
 {
-  "name": "gdsc-github-badge",
+  "name": "gdsc-uos-github-badge",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/LeeMir/gdsc-github-badge.git",
+  "repository": "https://github.com/LeeMir/gdsc-uos-github-badge.git",
   "author": "LeeMir <manofgodmj@gmail.com>",
   "license": "MIT",
   "scripts": {
@@ -11,9 +11,12 @@
     "start": "next start"
   },
   "dependencies": {
+    "axios": "^0.24.0",
+    "cheerio": "^1.0.0-rc.10",
     "next": "^12.0.7",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "@types/node": "^16.11.12",
