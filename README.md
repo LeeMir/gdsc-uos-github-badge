@@ -21,7 +21,7 @@
 
 _참고 : 역할(member / core / lead)에 따라 다름_
 
-<div align="center">
+<div align="center" width="100%">
     <img src="https://i.imgur.com/5Hr0zth.png" width="33%" />
     <img src="https://i.imgur.com/2AFMO0x.png" width="33%" />
     <img src="https://i.imgur.com/Iz1CGgE.png" width="33%" />
