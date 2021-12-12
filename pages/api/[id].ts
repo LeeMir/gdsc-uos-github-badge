@@ -4,20 +4,27 @@ import YAML from 'yamljs';
 import template from '../../utils/template';
 import { ROLE } from '../../utils/constants';
 
-const authorURL = 'https://github.com/GDSC-University-of-Seoul/gdsc-university-of-seoul.github.io/blob/master/_data/author.yml';
+interface User {
+  name: string;
+  display_name: string;
+  email: string;
+  github: string;
+  role: string;
+  member: boolean;
+  alumni: boolean;
+  blog_team?: boolean;
+  web?: string;
+}
 
-const makeUser = async (id) => {
-  const user = await getUser(id);
-  const role = (user.role === 'normal' ? ROLE.MEMBER : user.role === 'core' ? ROLE.CORE : user.role === 'lead' ? ROLE.LEAD : 'undefined');
-  user.role = role;
-  return user;
-};
+const authorURL = 'https://github.com/GDSC-University-of-Seoul/gdsc-university-of-seoul.github.io/blob/master/_data/author.yml';
+const blogURL = 'https://gdsc-university-of-seoul.github.io';
 
 export default async (req, res) => {
   const { id } = req.query;
   const user = await makeUser(id);
+  const posts = await countPosts(user);
   res.setHeader('Content-type', 'image/svg+xml');
-  res.status(200).send(template(user.name, user.role));
+  res.status(200).send(template(user.name, user.role, posts));
 };
 
 const getYaml = async () => {
@@ -28,7 +35,7 @@ const getYaml = async () => {
   }
 };
 
-const getUser = async (id) => {
+const getUser = async (id: string) => {
   const yaml = await getYaml();
   const $ = cheerio.load(yaml.data);
   const $searchItemList = $('.blob-code');
@@ -37,14 +44,19 @@ const getUser = async (id) => {
     searchItems += `${($(node).text())}\n`.toLowerCase();
   });
   const user = await {...YAML.parse(searchItems)[id]};
-  console.log(id, user);
   return user;
 };
 
-/*
-const getBlog = async (page) => {
+const makeUser = async (id: string) => {
+  const user = await getUser(id);
+  const role = (user.role === 'normal' ? ROLE.MEMBER : user.role === 'core' ? ROLE.CORE : user.role === 'lead' ? ROLE.LEAD : 'undefined');
+  user.role = role;
+  return user;
+};
+
+const getBlog = async (page: number) => {
   try {
-    return await axios.get(`https://gdsc-university-of-seoul.github.io/${(page !== 1) ? `page${page}` : ''}`);
+    return await axios.get(`${blogURL}/${(page !== 1) ? `page${page}` : ''}`);
   } catch (error) {
     if (error.response.status === 404) {
       return false;
@@ -54,26 +66,20 @@ const getBlog = async (page) => {
   }
 };
 
-const postList = async () => {
+const countPosts = async (user: User) => {
   let idx = 1;
-  const postInfo = [];
+  let cnt = 0;
 
   while (1) {
     const html = await getBlog(idx++);
-
     if (!html) break;
-
     const $ = cheerio.load(html.data);
     const $postList = $('.recent-posts .card');
-
     $postList.each((idx, node) => {
-      postInfo.push({
-        title: $(node).find('.card-title').text().trim(),
-        author: $(node).find('.author-meta > .post-name > a').text().trim(),
-        date: $(node).find('.author-meta > .post-date').text().trim()
-      })
+      if (user.display_name === $(node).find('.author-meta > .post-name > a').text().trim()) {
+        cnt++;
+      }
     });
   }
-  return postInfo;
+  return cnt;
 }
-*/

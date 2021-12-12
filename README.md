@@ -14,6 +14,7 @@
 
 - `Name` - GDSC UOS에서 사용하는 이름
 - `Role` - GDSC UOS에서 본인의 역할
+- `Posts` - GDSC UOS Blog에 업로드한 포스트 개수
 
 ![GDSC UOS Github Badge](https://gdsc-uos-github-badge.vercel.app/api/leemir)
 

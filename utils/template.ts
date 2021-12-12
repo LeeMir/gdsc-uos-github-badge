@@ -11,7 +11,7 @@ const role2Str = (role): string => {
   return '';
 }
 
-export default (name, role) => `
+export default (name: string, role: string, posts: number) => `
 <svg width="450" height="150" viewBox="0 0 450 150" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g clip-path="url(#clip0_8_24)">
 <rect width="450" height="150" rx="10" fill="white"/>
@@ -42,9 +42,10 @@ export default (name, role) => `
 <rect x="50" y="54" width="90" height="43" fill="url(#pattern0)"/>
 ${(role === ROLE.MEMBER) ? memberIcon : (role === ROLE.CORE) ? coreIcon : (role === ROLE.LEAD) ? leadIcon : ''}
 </g>
-<text x="150" y="60" fill="#000000" font-size="14" font-weight="900">${"in GDSC UOS"}</text>
-<text x="150" y="80" fill="#000000" font-size="14" font-weight="500">${`Name: ${name}`}</text>
-<text x="150" y="100" fill="#000000" font-size="14" font-weight="500">${`Role: ${role2Str(role)}`}</text>
+<text x="310" y="40" fill="#ACACAC" font-size="14" font-weight="900">${"GDSC UOS Stats"}</text>
+<text x="150" y="60" fill="#000000" font-size="14" font-weight="500">${`Name: ${name}`}</text>
+<text x="150" y="80" fill="#000000" font-size="14" font-weight="500">${`Role: ${role2Str(role)}`}</text>
+<text x="150" y="100" fill="#000000" font-size="14" font-weight="500">${`Posts: ${posts}`}</text>
 <defs>
 <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
 <use xlink:href="#image0_8_24" transform="translate(0 -0.00651163) scale(0.001 0.00209302)"/>
