@@ -4,8 +4,8 @@
     <p>
         별안간 깃허브 README 꾸미기 쿠키 프로젝트 🍪
     </p>
-    <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FLeeMir%2Fgdsc-uos-github-badge&count_bg=%236166B3&title_bg=%23555555&icon=googlekeep.svg&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
-    <img src="https://img.shields.io/github/stars/LeeMir/gdsc-uos-github-badge?style=flat&label=star">
+    <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FLeeMir%2Fgdsc-uos-github-badge&count_bg=%236166B3&title_bg=%23555555&icon=googlekeep.svg&icon_color=%23E7E7E7&title=hits&edge_flat=false" />
+    <img src="https://img.shields.io/github/stars/LeeMir/gdsc-uos-github-badge?style=flat&label=star" />
 </div>
 
 ## 기능 🛠️
