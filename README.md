@@ -8,6 +8,11 @@
     <img src="https://img.shields.io/github/stars/LeeMir/gdsc-uos-github-badge?style=flat&label=star" />
 </div>
 
+<br />
+<br />
+
+배포 주소: [https://gdsc-uos-github-badge.vercel.app](https://gdsc-uos-github-badge.vercel.app)
+
 ## 기능 🛠️
 
 ### 정보 💁
