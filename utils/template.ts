@@ -11,8 +11,7 @@ const role2Str = (role): string => {
   return '';
 }
 
-export default (name: string, role: string, posts: number) => `
-<svg width="450" height="150" viewBox="0 0 450 150" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+export default (name: string, role: string, posts: number) => `<svg width="450" height="150" viewBox="0 0 450 150" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g clip-path="url(#clip0_22_11)">
 <rect width="450" height="150" rx="10" fill="white"/>
 <rect x="0.5" y="0.5" width="449" height="149" rx="9.5" stroke="#8EC9FB" stroke-opacity="0.5"/>
