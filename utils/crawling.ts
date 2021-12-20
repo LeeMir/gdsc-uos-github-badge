@@ -40,7 +40,8 @@ const getUserInfo = async (id: string) => {
 
 export const getUser = async (id: string) => {
   const user = await getUserInfo(id);
-  if (user.toString() === {}.toString()) {
+
+  if (Object.keys(user).length === 0) {
     return undefined;
   }
 
