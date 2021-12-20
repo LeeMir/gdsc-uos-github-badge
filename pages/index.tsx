@@ -27,6 +27,14 @@ const InputContainer = styled.div`
   gap: 1rem;
 `;
 
+const BadgeWrap = styled.div`
+  cursor: pointer;
+  &:hover {
+    filter: brightness(90%);
+  }
+  transition: all 0.2s ease-in-out;
+`;
+
 const Input = styled.input`
   outline: none;
   width: 10rem;
@@ -57,22 +65,41 @@ const Button = styled.button`
   transition: all 0.2s ease-in-out;
 `;
 
-const SampleImg = ({ src }) => {
-  return <SVG src={src} />;
+const SampleBadge = ({ src, clickFn }) => {
+  return (
+    <BadgeWrap onClick={clickFn}>
+      <SVG src={src} />
+    </BadgeWrap>
+  );
 };
 
 const Index = () => {
   const [githubID, setGithubID] = useState('');
   const [svg, setSVG] = useState(template('', ROLE.MEMBER, 0));
   const [isLoading, setIsLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
   const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setGithubID(e.currentTarget.value);
   };
   const generateSVG = async () => {
     setIsLoading(true);
     const res = await axios.get(`/api/${githubID}`);
-    setSVG(res.data);
+    if (res.status === 200) {
+      setSVG(res.data);
+      setSuccess(true);
+    } else if (res.status === 204) {
+      alert('데이터 찾을 수 없음');
+      setSuccess(false);
+    }
     setIsLoading(false);
+  };
+  const copyToMarkdown = async () => {
+    if (success) {
+      await navigator.clipboard.writeText(`![GDSC UOS Github Badge](https://gdsc-uos-github-badge.vercel.app/api/${githubID})`);
+      alert('복사 완료');
+    } else {
+      alert('복사할 데이터가 없음');
+    }
   };
   return (
     <Layout>
@@ -81,7 +108,7 @@ const Index = () => {
         <Input placeholder='Github ID 입력' value={githubID} onChange={inputHandler} />
         <Button onClick={generateSVG}>생성</Button>
       </InputContainer>
-      { !isLoading && <SampleImg src={svg} /> }
+      { !isLoading && <SampleBadge src={svg} clickFn={copyToMarkdown} /> }
       { isLoading && <Image src={loadingGIF} /> }
     </Layout>
   );

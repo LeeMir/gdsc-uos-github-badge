@@ -40,6 +40,10 @@ const getUserInfo = async (id: string) => {
 
 export const getUser = async (id: string) => {
   const user = await getUserInfo(id);
+  if (user.toString() === {}.toString()) {
+    return undefined;
+  }
+
   const role = (user.role === 'normal' ? ROLE.MEMBER : user.role === 'core' ? ROLE.CORE : user.role === 'lead' ? ROLE.LEAD : 'undefined');
   user.role = role;
   return user;
