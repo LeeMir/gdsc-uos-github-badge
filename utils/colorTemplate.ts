@@ -1,11 +1,11 @@
 import { VERSION } from './constants';
-import getTemplate from './svgTemplate';
+import getTemplate from './getTemplate';
 
 const isAlumni = (name: string) => {
   return [
     'hojunee',
-    'Enoch-Kim',
-    'MOBUMIN',
+    'enoch-kim',
+    'mobumin',
     'r4k0nb4k0n',
     'gusrb3164',
     'min6choi',
@@ -26,9 +26,9 @@ const isAlumni = (name: string) => {
 const isFrontEnd = (name: string) => {
   return [
     'poiu694',
-    'LeeMir',
+    'leemir',
     'pasly0920',
-    'JihamSong',
+    'jihamsong',
     '0inhae0',
     'Hong Gil Dong'
   ].find((v) => v === name);
@@ -47,7 +47,7 @@ const isBackEnd = (name: string) => {
 
 const isDataML = (name: string) => {
   return [
-    'YubeenSon',
+    'yubeenson',
     'happiesoo41',
     'ms9648',
     'keepproceeding',
@@ -57,7 +57,7 @@ const isDataML = (name: string) => {
 };
 
 const isMobile = (name: string) => {
-  return ['SHEELE41', 'kstew16', 'EGGHEADIARY', 'owao'].find((v) => v === name);
+  return ['sheele41', 'kstew16', 'eggheadiary', 'owao'].find((v) => v === name);
 };
 
 /**
@@ -80,6 +80,5 @@ const matchVersion = (name: string) => {
 const colorTemplate = (name: string, role: string, posts: number) => {
   return getTemplate(name, role, posts, matchVersion(name));
 }
-  
 
 export default colorTemplate;
