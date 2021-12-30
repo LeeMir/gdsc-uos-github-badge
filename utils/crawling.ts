@@ -41,7 +41,6 @@ const getUserInfo = async (id: string) => {
 
 export const getUser = async (id: string) => {
   const user = await getUserInfo(id);
-  console.log(user);
   if (Object.keys(user).length === 0) {
     return undefined;
   }
