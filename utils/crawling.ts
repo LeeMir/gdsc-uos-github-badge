@@ -15,7 +15,8 @@ interface User {
   web?: string;
 }
 
-const authorURL = 'https://github.com/GDSC-University-of-Seoul/gdsc-university-of-seoul.github.io/blob/master/_data/author.yml';
+const authorURL =
+  'https://github.com/GDSC-University-of-Seoul/gdsc-university-of-seoul.github.io/blob/master/_data/author.yml';
 const blogURL = 'https://gdsc-university-of-seoul.github.io';
 
 const getYaml = async () => {
@@ -32,27 +33,35 @@ const getUserInfo = async (id: string) => {
   const $searchItemList = $('.blob-code');
   let searchItems = '';
   $searchItemList.each((idx, node) => {
-    searchItems += `${($(node).text())}\n`.toLowerCase();
+    searchItems += `${$(node).text()}\n`.toLowerCase();
   });
-  const user = await {...YAML.parse(searchItems)[id]};
+  const user = await { ...YAML.parse(searchItems)[id] };
   return user;
 };
 
 export const getUser = async (id: string) => {
   const user = await getUserInfo(id);
-
   if (Object.keys(user).length === 0) {
     return undefined;
   }
 
-  const role = (user.role === 'normal' ? ROLE.MEMBER : user.role === 'core' ? ROLE.CORE : user.role === 'lead' ? ROLE.LEAD : 'undefined');
+  const role =
+    user.role === 'normal'
+      ? ROLE.MEMBER
+      : user.role === 'core'
+      ? ROLE.CORE
+      : user.role === 'lead'
+      ? ROLE.LEAD
+      : user.role === 'alumni'
+      ? ROLE.ALUMNI
+      : undefined;
   user.role = role;
   return user;
 };
 
 const getBlog = async (page: number) => {
   try {
-    return await axios.get(`${blogURL}/${(page !== 1) ? `page${page}` : ''}`);
+    return await axios.get(`${blogURL}/${page !== 1 ? `page${page}` : ''}`);
   } catch (error) {
     if (error.response.status === 404) {
       return false;
@@ -72,7 +81,10 @@ export const countPosts = async (user: User) => {
     const $ = cheerio.load(html.data);
     const $postList = $('.recent-posts .card');
     $postList.each((idx, node) => {
-      if (user.display_name === $(node).find('.author-meta > .post-name > a').text().trim()) {
+      if (
+        user.display_name ===
+        $(node).find('.author-meta > .post-name > a').text().trim()
+      ) {
         cnt++;
       }
     });

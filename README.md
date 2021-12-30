@@ -33,6 +33,22 @@ _참고 : 역할(member / core / lead)에 따라 다름_
     <img src="https://i.imgur.com/Iz1CGgE.png" width="33%" />
 </div>
 
+### 팔레트 🎨
+
+붉은색 - Backend
+푸른색 - Data & ML
+초록색 - Mobile
+노란색 - Frontend
+혼합 - Alumni
+
+<div align="center" width="100%">
+    <img src="https://imgur.com/V3s6fCA.png" width="33%" />
+    <img src="https://imgur.com/sejPz5h.png" width="33%" />
+    <img src="https://imgur.com/bGpVXH9.png" width="33%" />
+    <img src="https://imgur.com/v8CNmHa.png" width="33%" />
+    <img src="https://imgur.com/qZ2tohc.png" width="33%" />
+</div>
+
 ## 사용법 🏃
 
 README에 이 코드를 복사한 뒤 깃허브 아이디를 입력해주세요!
@@ -40,3 +56,4 @@ README에 이 코드를 복사한 뒤 깃허브 아이디를 입력해주세요!
 ```markdown
 ![GDSC UOS Github Badge](https://gdsc-uos-github-badge.vercel.app/api/{github_id})
 ```
+

@@ -5,6 +5,7 @@ import styled from '@emotion/styled';
 import axios from 'axios';
 import { ROLE } from '../utils/constants';
 import template from '../utils/template';
+import colorTemplate from '../utils/colorTemplate';
 import loadingGIF from '../assets/images/loading.gif';
 
 const Layout = styled.div`
@@ -75,7 +76,8 @@ const SampleBadge = ({ src, clickFn }) => {
 
 const Index = () => {
   const [githubID, setGithubID] = useState('');
-  const [svg, setSVG] = useState(template('', ROLE.MEMBER, 0));
+  const [svg, setSVG] = useState(template('Hong Gil Dong', ROLE.MEMBER, 2));
+  const [colorSvg, setColorSVG] = useState(colorTemplate('Hong Gil Dong', ROLE.MEMBER, 2));
   const [isLoading, setIsLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -83,19 +85,29 @@ const Index = () => {
   };
   const generateSVG = async () => {
     setIsLoading(true);
-    const res = await axios.get(`/api/${githubID}`);
-    if (res.status === 200) {
-      setSVG(res.data);
+    const basicBadgeRes = await axios.get(`/api/${githubID}`);
+    const colorBadgeRes = await axios.get(`/api/color/${githubID}`);
+    if (basicBadgeRes.status === 200) {
+      setSVG(basicBadgeRes.data);
+      setColorSVG(colorBadgeRes.data);
       setSuccess(true);
-    } else if (res.status === 204) {
+    } else if (basicBadgeRes.status === 204) {
       alert('데이터 찾을 수 없음');
       setSuccess(false);
     }
     setIsLoading(false);
   };
-  const copyToMarkdown = async () => {
+  const copyToMarkdownBasicBadge = async () => {
     if (success) {
       await navigator.clipboard.writeText(`![GDSC UOS Github Badge](https://gdsc-uos-github-badge.vercel.app/api/${githubID})`);
+      alert('복사 완료');
+    } else {
+      alert('복사할 데이터가 없음');
+    }
+  };
+  const copyToMarkdownColorBadge = async () => {
+    if (success) {
+      await navigator.clipboard.writeText(`![GDSC UOS Github Badge](https://gdsc-uos-github-badge.vercel.app/api/color/${githubID})`);
       alert('복사 완료');
     } else {
       alert('복사할 데이터가 없음');
@@ -105,11 +117,20 @@ const Index = () => {
     <Layout>
       <Title>GDSC UOS Github Badge Generator</Title>
       <InputContainer>
-        <Input placeholder='Github ID 입력' value={githubID} onChange={inputHandler} />
+        <Input
+          placeholder='Github ID 입력'
+          value={githubID}
+          onChange={inputHandler}
+        />
         <Button onClick={generateSVG}>생성</Button>
       </InputContainer>
-      { !isLoading && <SampleBadge src={svg} clickFn={copyToMarkdown} /> }
-      { isLoading && <Image src={loadingGIF} /> }
+      {!isLoading && (
+        <SampleBadge src={svg} clickFn={copyToMarkdownBasicBadge} />
+      )}
+      {!isLoading && (
+        <SampleBadge src={colorSvg} clickFn={copyToMarkdownColorBadge} />
+      )}
+      {isLoading && <Image src={loadingGIF} />}
     </Layout>
   );
 };
