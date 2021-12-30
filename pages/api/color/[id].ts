@@ -9,5 +9,5 @@ export default async (req, res) => {
   }
   const posts = await countPosts(user);
   res.setHeader('Content-type', 'image/svg+xml');
-  res.status(200).send(colorTemplate(user.name, user.role, posts));
+  res.status(200).send(colorTemplate(user.github, user.role, posts));
 };
