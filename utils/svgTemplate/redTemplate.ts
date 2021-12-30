@@ -26,7 +26,7 @@ ${
 <text x="150" y="45" fill="#000000" font-size="14px" font-weight="500">${`${name}\`s Profile`}</text>
 <text x="150" y="70" fill="#000000" font-size="14px" font-weight="500"> Team </text>
 <text x="150" y="90" fill="#000000" font-size="14px" font-weight="500"> Role </text>
-<text x="150" y="110" fill="#000000" font-size="14px"font-weight="500"> Post </text>
+<text x="150" y="110" fill="#000000" font-size="14px" font-weight="500"> Post </text>
 <text x="200" y="70" fill="#000000" font-size="14px"> Backend </text>
 <text x="200" y="90" fill="#000000" font-size="14px"> ${`${role2Str(
   role
