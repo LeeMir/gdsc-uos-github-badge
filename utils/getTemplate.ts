@@ -15,12 +15,18 @@ const getTemplate = (
   posts: number,
   version: string
 ) => {
-  if (version === VERSION.BASIC) return svgTemplate.basicTemplate(name, role, posts);
-  if (version === VERSION.YELLOW) return svgTemplate.yellowTemplate(name, role, posts);
-  if (version === VERSION.GREEN) return svgTemplate.greenTemplate(name, role, posts);
-  if (version === VERSION.RED) return svgTemplate.redTemplate(name, role, posts);
-  if (version === VERSION.BLUE) return svgTemplate.blueTemplate(name, role, posts);
-  if (version === VERSION.ALUMNI) return svgTemplate.alumniTemplate(name, role, posts);
+  if (version === VERSION.BASIC)
+    return svgTemplate.basicTemplate(name, role, posts);
+  if (version === VERSION.YELLOW)
+    return svgTemplate.yellowTemplate(name, role, posts);
+  if (version === VERSION.GREEN)
+    return svgTemplate.greenTemplate(name, role, posts);
+  if (version === VERSION.RED)
+    return svgTemplate.redTemplate(name, role, posts);
+  if (version === VERSION.BLUE)
+    return svgTemplate.blueTemplate(name, role, posts);
+  if (version === VERSION.ALUMNI)
+    return svgTemplate.alumniTemplate(name, role, posts);
   return '';
 };
 

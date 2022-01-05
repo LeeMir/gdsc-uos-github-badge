@@ -11,5 +11,5 @@ export const VERSION = {
   GREEN: 'green',
   BLUE: 'blue',
   RED: 'red',
-  ALUMNI: 'alumni'
-}
+  ALUMNI: 'alumni',
+};

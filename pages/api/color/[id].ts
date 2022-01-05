@@ -1,7 +1,7 @@
 import colorTemplate from '../../../utils/colorTemplate';
 import { countPosts, getUser } from '../../../utils/crawling';
 
-export default async (req, res) => {
+const colorBadgeController = async (req, res) => {
   const { id } = req.query;
   const user = await getUser(id);
   if (!user) {
@@ -11,3 +11,5 @@ export default async (req, res) => {
   res.setHeader('Content-type', 'image/svg+xml');
   res.status(200).send(colorTemplate(user.github, user.role, posts));
 };
+
+export default colorBadgeController;

@@ -30,7 +30,7 @@ const isFrontEnd = (name: string) => {
     'pasly0920',
     'jihamsong',
     '0inhae0',
-    'Hong Gil Dong'
+    'Hong Gil Dong',
   ].find((v) => v === name);
 };
 
@@ -79,6 +79,6 @@ const matchVersion = (name: string) => {
 
 const colorTemplate = (name: string, role: string, posts: number) => {
   return getTemplate(name, role, posts, matchVersion(name));
-}
+};
 
 export default colorTemplate;

@@ -41,7 +41,7 @@ const Input = styled.input`
   width: 10rem;
   height: 3rem;
   padding: 0.3rem;
-  border: 2px solid #CDCDCD;
+  border: 2px solid #cdcdcd;
   border-radius: 8px;
   font-size: 1.2rem;
   &:focus-visible {
@@ -52,16 +52,16 @@ const Input = styled.input`
 
 const Button = styled.button`
   width: 5rem;
-  border: 2px solid #CDCDCD;
-  background-color: #FFFFFF;
+  border: 2px solid #cdcdcd;
+  background-color: #ffffff;
   border-radius: 8px;
   font-size: 1.2rem;
   cursor: pointer;
   &:hover {
-    background-color: #EDEDED;
+    background-color: #ededed;
   }
   &:active {
-    background-color: #CDCDCD;
+    background-color: #cdcdcd;
   }
   transition: all 0.2s ease-in-out;
 `;
@@ -77,7 +77,9 @@ const SampleBadge = ({ src, clickFn }) => {
 const Index = () => {
   const [githubID, setGithubID] = useState('');
   const [svg, setSVG] = useState(template('Hong Gil Dong', ROLE.MEMBER, 2));
-  const [colorSvg, setColorSVG] = useState(colorTemplate('Hong Gil Dong', ROLE.MEMBER, 2));
+  const [colorSvg, setColorSVG] = useState(
+    colorTemplate('Hong Gil Dong', ROLE.MEMBER, 2)
+  );
   const [isLoading, setIsLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -99,7 +101,9 @@ const Index = () => {
   };
   const copyToMarkdownBasicBadge = async () => {
     if (success) {
-      await navigator.clipboard.writeText(`![GDSC UOS Github Badge](https://gdsc-uos-github-badge.vercel.app/api/${githubID})`);
+      await navigator.clipboard.writeText(
+        `![GDSC UOS Github Badge](https://gdsc-uos-github-badge.vercel.app/api/${githubID})`
+      );
       alert('복사 완료');
     } else {
       alert('복사할 데이터가 없음');
@@ -107,7 +111,9 @@ const Index = () => {
   };
   const copyToMarkdownColorBadge = async () => {
     if (success) {
-      await navigator.clipboard.writeText(`![GDSC UOS Github Badge](https://gdsc-uos-github-badge.vercel.app/api/color/${githubID})`);
+      await navigator.clipboard.writeText(
+        `![GDSC UOS Github Badge](https://gdsc-uos-github-badge.vercel.app/api/color/${githubID})`
+      );
       alert('복사 완료');
     } else {
       alert('복사할 데이터가 없음');
@@ -130,7 +136,7 @@ const Index = () => {
       {!isLoading && (
         <SampleBadge src={colorSvg} clickFn={copyToMarkdownColorBadge} />
       )}
-      {isLoading && <Image src={loadingGIF} />}
+      {isLoading && <Image src={loadingGIF} alt='loading' />}
     </Layout>
   );
 };
