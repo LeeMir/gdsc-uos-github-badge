@@ -10,5 +10,10 @@
       }
     ]
   ],
-  "plugins": ["@emotion/babel-plugin"]
+  "plugins": ["@emotion/babel-plugin"],
+  "env": {
+    "development": {
+      "compact": false
+    }
+  }
 }
