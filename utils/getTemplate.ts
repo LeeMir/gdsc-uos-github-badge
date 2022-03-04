@@ -1,7 +1,7 @@
 import { ROLE, VERSION } from './constants';
 import * as svgTemplate from './svgTemplate';
 
-export const role2Str = (role): string => {
+export const role2Str = (role: string): string => {
   switch (role) {
     case ROLE.MEMBER:
       return 'Member';
