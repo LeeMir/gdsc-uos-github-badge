@@ -85,6 +85,11 @@ const Index = () => {
   const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setGithubID(e.currentTarget.value);
   };
+  const enterHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      generateSVG();
+    }
+  };
   const generateSVG = async () => {
     setIsLoading(true);
     const basicBadgeRes = await axios.get(`/api/${githubID}`);
@@ -127,6 +132,7 @@ const Index = () => {
           placeholder='Github ID 입력'
           value={githubID}
           onChange={inputHandler}
+          onKeyPress={enterHandler}
         />
         <Button onClick={generateSVG}>생성</Button>
       </InputContainer>
