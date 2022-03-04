@@ -35,7 +35,12 @@ const getUserInfo = async (id: string) => {
   $searchItemList.each((idx, node) => {
     searchItems += `${$(node).text()}\n`.toLowerCase();
   });
-  const user = await { ...YAML.parse(searchItems)[id] };
+  const userList = await YAML.parse(searchItems);
+  const userId = Object.keys(userList).find(
+    (key: string) =>
+      userList[key].github.toLowerCase() === id.toLocaleLowerCase()
+  );
+  const user = userId ? userList[userId] : undefined;
   return user;
 };
 
