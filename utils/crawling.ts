@@ -33,7 +33,7 @@ const getUserInfo = async (id: string) => {
   const $searchItemList = $('.blob-code');
   let searchItems = '';
   $searchItemList.each((idx, node) => {
-    searchItems += `${$(node).text()}\n`.toLowerCase();
+    searchItems += `${$(node).text()}\n`;
   });
   const userList = await YAML.parse(searchItems);
   const userId = Object.keys(userList).find(

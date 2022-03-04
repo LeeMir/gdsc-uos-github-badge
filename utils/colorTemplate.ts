@@ -20,7 +20,7 @@ const isAlumni = (name: string) => {
     'koreanhole',
     'coloryourlife',
     'presentnine',
-  ].find((v) => v === name);
+  ].find((v) => v === name.toLowerCase());
 };
 
 const isFrontEnd = (name: string) => {
@@ -31,7 +31,7 @@ const isFrontEnd = (name: string) => {
     'jihamsong',
     '0inhae0',
     'Hong Gil Dong',
-  ].find((v) => v === name);
+  ].find((v) => v === name.toLowerCase());
 };
 
 const isBackEnd = (name: string) => {
@@ -42,7 +42,7 @@ const isBackEnd = (name: string) => {
     'kir3i',
     'hyehyeonmoon',
     'jminie-o8o',
-  ].find((v) => v === name);
+  ].find((v) => v === name.toLowerCase());
 };
 
 const isDataML = (name: string) => {
@@ -53,11 +53,13 @@ const isDataML = (name: string) => {
     'keepproceeding',
     'aerojohn1223',
     'solbat',
-  ].find((v) => v === name);
+  ].find((v) => v === name.toLowerCase());
 };
 
 const isMobile = (name: string) => {
-  return ['sheele41', 'kstew16', 'eggheadiary', 'owao'].find((v) => v === name);
+  return ['sheele41', 'kstew16', 'eggheadiary', 'owao'].find(
+    (v) => v === name.toLowerCase()
+  );
 };
 
 /**
