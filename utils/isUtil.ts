@@ -19,6 +19,10 @@ const isAlumni = (name: string) => {
     'koreanhole',
     'coloryourlife',
     'presentnine',
+    'keepproceeding',
+    'kir3i',
+    'owao',
+    'aerojohn1223'
   ].find((v) => v === name.toLowerCase());
 };
 
@@ -29,7 +33,10 @@ const isFrontEnd = (name: string) => {
     'pasly0920',
     'jihamsong',
     '0inhae0',
-    'Hong Gil Dong',
+    'hyehyeonmoon',
+    'ssuhyunkim',
+    'tnghd5761',
+    'hong gil dong',
   ].find((v) => v === name.toLowerCase());
 };
 
@@ -38,25 +45,24 @@ const isBackEnd = (name: string) => {
     'suin0730',
     'iju1633',
     'rxdcxdrnine',
-    'kir3i',
-    'hyehyeonmoon',
-    'jminie-o8o',
+    'yubeenson',
+    'qf9ar8nv',
+    'dghg'
   ].find((v) => v === name.toLowerCase());
 };
 
 const isDataML = (name: string) => {
   return [
-    'yubeenson',
+    'hjm507',
     'happiesoo41',
     'ms9648',
-    'keepproceeding',
-    'aerojohn1223',
     'solbat',
+    'custardcream98',
   ].find((v) => v === name.toLowerCase());
 };
 
 const isMobile = (name: string) => {
-  return ['sheele41', 'kstew16', 'eggheadiary', 'owao'].find(
+  return ['sheele41', 'kstew16', 'eggheadiary', 'jminie-o8o'].find(
     (v) => v === name.toLowerCase()
   );
 };
