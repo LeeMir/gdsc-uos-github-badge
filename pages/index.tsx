@@ -3,10 +3,11 @@ import SVG from 'react-inlinesvg';
 import Image from 'next/image';
 import styled from '@emotion/styled';
 import axios from 'axios';
-import { ROLE } from '../utils/constants';
+import { BADGE_TYPE, ROLE } from '../utils/constants';
 import template from '../utils/template';
 import colorTemplate from '../utils/colorTemplate';
 import loadingGIF from '../assets/images/loading.gif';
+import copyToClipBoard from '../utils/copyToClipboard';
 
 const Layout = styled.div`
   display: flex;
@@ -104,21 +105,20 @@ const Index = () => {
     }
     setIsLoading(false);
   };
-  const copyToMarkdownBasicBadge = async () => {
+  const copyToMarkdownBadge = (type: string) => {
     if (success) {
-      await navigator.clipboard.writeText(
-        `![GDSC UOS Github Badge](https://gdsc-uos-github-badge.vercel.app/api/${githubID})`
-      );
-      alert('복사 완료');
-    } else {
-      alert('복사할 데이터가 없음');
-    }
-  };
-  const copyToMarkdownColorBadge = async () => {
-    if (success) {
-      await navigator.clipboard.writeText(
-        `![GDSC UOS Github Badge](https://gdsc-uos-github-badge.vercel.app/api/color/${githubID})`
-      );
+      let text: string;
+      switch (type) {
+        case BADGE_TYPE.COLOR:
+          text = `![GDSC UOS Github Badge](https://gdsc-uos-github-badge.vercel.app/api/color/${githubID})`;
+          break;
+        case BADGE_TYPE.DEFAULT:
+          text = `![GDSC UOS Github Badge](https://gdsc-uos-github-badge.vercel.app/api/${githubID})`;
+          break;
+        default:
+          break;
+      }
+      copyToClipBoard(text);
       alert('복사 완료');
     } else {
       alert('복사할 데이터가 없음');
@@ -137,10 +137,16 @@ const Index = () => {
         <Button onClick={generateSVG}>생성</Button>
       </InputContainer>
       {!isLoading && (
-        <SampleBadge src={svg} clickFn={copyToMarkdownBasicBadge} />
+        <SampleBadge
+          src={svg}
+          clickFn={() => copyToMarkdownBadge(BADGE_TYPE.DEFAULT)}
+        />
       )}
       {!isLoading && (
-        <SampleBadge src={colorSvg} clickFn={copyToMarkdownColorBadge} />
+        <SampleBadge
+          src={colorSvg}
+          clickFn={() => copyToMarkdownBadge(BADGE_TYPE.COLOR)}
+        />
       )}
       {isLoading && <Image src={loadingGIF} alt='loading' />}
     </Layout>

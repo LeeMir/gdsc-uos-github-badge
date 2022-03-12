@@ -13,3 +13,8 @@ export const VERSION = {
   RED: 'red',
   ALUMNI: 'alumni',
 };
+
+export const BADGE_TYPE = {
+  DEFAULT: 'default',
+  COLOR: 'color',
+};
