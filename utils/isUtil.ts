@@ -22,7 +22,7 @@ const isAlumni = (name: string) => {
     'keepproceeding',
     'kir3i',
     'owao',
-    'aerojohn1223'
+    'aerojohn1223',
   ].find((v) => v === name.toLowerCase());
 };
 
@@ -47,18 +47,14 @@ const isBackEnd = (name: string) => {
     'rxdcxdrnine',
     'yubeenson',
     'qf9ar8nv',
-    'dghg'
+    'dghg',
   ].find((v) => v === name.toLowerCase());
 };
 
 const isDataML = (name: string) => {
-  return [
-    'hjm507',
-    'happiesoo41',
-    'ms9648',
-    'solbat',
-    'custardcream98',
-  ].find((v) => v === name.toLowerCase());
+  return ['hjm507', 'happiesoo41', 'ms9648', 'solbat', 'custardcream98'].find(
+    (v) => v === name.toLowerCase()
+  );
 };
 
 const isMobile = (name: string) => {
