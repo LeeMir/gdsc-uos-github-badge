@@ -93,15 +93,16 @@ const Index = () => {
   };
   const generateSVG = async () => {
     setIsLoading(true);
-    const basicBadgeRes = await axios.get(`/api/${githubID}`);
-    const colorBadgeRes = await axios.get(`/api/color/${githubID}`);
-    if (basicBadgeRes.status === 200) {
-      setSVG(basicBadgeRes.data);
-      setColorSVG(colorBadgeRes.data);
-      setSuccess(true);
-    } else if (basicBadgeRes.status === 204) {
+    const res = await axios.get(`/api/all/${githubID}`);
+    if (res.status === 204) {
       alert('데이터 찾을 수 없음');
       setSuccess(false);
+    }
+    if (res.status === 200) {
+      const badgeList = await res.data;
+      setSVG(badgeList.default);
+      setColorSVG(badgeList.color);
+      setSuccess(true);
     }
     setIsLoading(false);
   };
