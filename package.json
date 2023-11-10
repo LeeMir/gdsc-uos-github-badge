@@ -15,7 +15,7 @@
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
-    "axios": "^0.24.0",
+    "axios": "^1.6.0",
     "cheerio": "^1.0.0-rc.10",
     "next": "^12.1.0",
     "react": "^17.0.2",
